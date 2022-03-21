@@ -18,11 +18,14 @@ class Personas {
         return this.mascota.length
     }
     getBookNames = () =>{
-        return this.libros
+        let libros1 = this.libros
+        for (let i = 0; i < libros1.length; i++) {
+            console.log(libros1[i].nombre)
+        }
     }
 }
 
-const person1 = new Personas('Franco','Arias',['1984,', 'el principito'],'luchi');
+const person1 = new Personas('Franco','Arias',[{nombre: '1984', autor: 'orwel'}, {nombre: 'Principito', autor: 'Antoine de Saint-Exupéry'}],'luchi');
 
 person1.addMascosta('kaian')
 console.log(person1.getFullName());
