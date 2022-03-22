@@ -1,0 +1,7 @@
+[
+	{
+		"titulo": "porfaaa",
+		"precio": 15,
+		"id": 1
+	}
+]
