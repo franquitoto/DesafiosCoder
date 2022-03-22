@@ -1,7 +1,12 @@
 [
 	{
-		"titulo": "porfaaa",
-		"precio": 15,
+		"titulo": "regla",
+		"precio": 150,
 		"id": 1
+	},
+	{
+		"titulo": "goma",
+		"precio": 70,
+		"id": 3
 	}
 ]
