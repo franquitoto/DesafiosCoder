@@ -1,0 +1,32 @@
+[
+	{
+		"titulo": "regla",
+		"precio": 150,
+		"id": 1
+	},
+	{
+		"titulo": "goma",
+		"precio": 75,
+		"id": 2
+	},
+	{
+		"titulo": "Lapiz",
+		"precio": 150,
+		"id": 3
+	},
+	{
+		"titulo": "Cartuchera",
+		"precio": 500,
+		"id": 4
+	},
+	{
+		"titulo": "Carpeta",
+		"precio": 1000,
+		"id": 5
+	},
+	{
+		"titulo": "Mochila",
+		"precio": 1000,
+		"id": 6
+	}
+]
