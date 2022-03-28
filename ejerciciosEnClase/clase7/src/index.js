@@ -118,4 +118,5 @@ app.delete('/api/palabras/:pos', (req, res) => {
         })
     }
 })
+console.log("prueba")
 
