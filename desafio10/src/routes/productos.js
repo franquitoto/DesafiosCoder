@@ -1,3 +1,4 @@
+
 const { Router } = require('express');
 const express = require('express');
 const Productos = require('../controller/productos');
@@ -12,14 +13,15 @@ router.get('/', (req, res) =>{
 });
 
 router.post('/guardar', (req, res) =>{
+
     const body = req.body;
     const nuevoProducto = {
         titulo: body.titulo,
         precio: body.precio
     };
+    
     Productos.save(nuevoProducto)
     res.redirect('/')
-    
-    
 })
+
 module.exports = router;
