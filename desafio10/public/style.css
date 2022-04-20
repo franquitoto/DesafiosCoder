@@ -1,11 +1,18 @@
-#form{
+.form{
     background-color: aqua;
     padding: 20px;
     margin-top: 20px;
     margin-left: 20px;
     width: 500px;
     border-radius: 3%;
-    
+}
+.chat{
+    background-color: ghostwhite;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 500px;
+    border-radius: 3%;
 }
 #table{
     padding: 20px;
@@ -19,13 +26,33 @@
     padding-left:20px ;
 }
 #div{
-    display: flex;
+    align-self: center;
     flex-wrap: wrap;
     flex-direction: column;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    background-color: brown;
+   
+}
+
+.tablaNone{
+    display: none;
     
 }
-#hijo1{
-
+.tablaBlock{
+    display: block;
+    
+}
+#body{
+    background-color: brown;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+#div2{
+    width: 500px;
+    height: 500px;
 }

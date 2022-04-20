@@ -40,15 +40,29 @@ app.use('/api', mainRouter);
 
 const myWSServer = io(myServer)
 
+const usuarios = []
+
 myWSServer.on('connection', (socket ) =>{
     console.log('un cliente se a conectado');
     console.log('socket del server', socket.id);
     console.log('socket del cliente', socket.client.id);
-
+    const usuario = socket.client.id;
+    usuarios.push(usuario)
+    socket.emit('newUser', usuario);
     socket.on('message', (data) =>{
         Productos.save(data)
         myWSServer.emit('response', Productos.getAll())
-    })
+    });
+    socket.on('chat', (data) =>{
+        let index = usuarios.indexOf(usuario)
+        console.log(data)
+        const mensaje = {
+            usuario: usuario,
+            mensaje: data,
+            index: index
+        }
+        myWSServer.emit('mensaje+usuario', mensaje);
+    });
 
     
     

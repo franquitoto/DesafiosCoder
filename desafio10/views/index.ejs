@@ -11,14 +11,15 @@
 
     <title>Document</title>
 </head>
-<body>
+<body id="body">
 
     <div id="div">
         <div >
             <%- include ('./parciales/formulario.ejs') %> 
         </div>
         <div id="hijo2">
-            <div>
+            <p id="p" class="tablaBlock">No hay productos disponibles</p>
+            <div id="tabla" class="tablaNone">
                 <h1 id="titulo">Productos</h1>
                 <table class="table table-dark table-striped" id="table">
                     <thead>
@@ -34,6 +35,22 @@
                 </table>
             </div>
         </div>
+    </div>
+    <div id="div2"> 
+        <form action="" class="chat" id="form1">
+            <legend>Chat</legend>
+            <div id="bodyMensajes">
+                
+            </div>
+            <fieldset>
+              
+              <div class="mb-3">
+                
+                <input required name="mensaje" type="text" id="mensaje" class="form-control mensaje" placeholder="Escriba un mensaje..">
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </fieldset>
+          </form>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
