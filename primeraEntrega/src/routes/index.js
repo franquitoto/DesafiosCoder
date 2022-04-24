@@ -1,5 +1,6 @@
 const express = require('express');
 const productosRouter = require('./productos');
+const carritoRouter = require('./carrito');
 
 
 const router = express.Router();
@@ -12,4 +13,5 @@ router.get('/', (req, res) =>{
 
 
 router.use('/productos', productosRouter);
+router.use('/carrito', carritoRouter);
 module.exports = router;
