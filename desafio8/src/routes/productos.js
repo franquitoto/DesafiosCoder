@@ -59,8 +59,9 @@ const producto1 = new Contenedor()
 
 
 router.get('/', (req, res) =>{
+    let productos = producto1.read()
     res.json({
-        msj: producto1.read()
+        productos
     });
 });
 

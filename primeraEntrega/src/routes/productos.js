@@ -56,7 +56,7 @@ router.put('/:id', (req, res) =>{
     const body = req.body;
     const titulo = req.body.titulo;
     const precio = req.body.precio;
-    if(Productos.controlId === true){
+    if(Productos.controlId(id) === true){
         if(typeof titulo != "string"){
             return res.status(400).json({
                 error: "El titulo debe ser un string"
