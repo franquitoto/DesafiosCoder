@@ -10,7 +10,7 @@ const save = (data) =>{
         const dataBase = fs.readFileSync(path2, 'utf-8');
         const productos = JSON.parse(dataBase)
         const nuevoProducto = {
-            id: productos.length+1,
+            id: uuid(),
             timestamp: new Date(),
             titulo: data.titulo,
             precio: data.precio
@@ -29,14 +29,14 @@ const getAll = () =>{
 const getId = (data) =>{
     const dataBase = fs.readFileSync(path2, 'utf-8');
     const productos = JSON.parse(dataBase)
-    return productos[data-1]
+    const retorno = productos.filter(e => e.id === data)
+    return retorno
 }
 const changeId = (id, data) =>{
     const dataBase = fs.readFileSync(path2, 'utf-8');
     const productos = JSON.parse(dataBase)
-    const index = productos.findIndex(e =>{
-        return e.id === id
-    })
+    const index = productos.findIndex(e => e.id === id)
+    console.log(index)
     console.log(productos[index])
     productos[index].titulo = data.titulo
     productos[index].precio = data.precio
@@ -51,12 +51,13 @@ const deleteId = (id) =>{
 const controlId = (id) =>{
     const dataBase = fs.readFileSync(path2, 'utf-8');
     const productos = JSON.parse(dataBase)
-    if(isNaN(id)){
-        return false
-    }
-    if(id >= 0 && id <= productos.length){
+    const index = productos.findIndex(e => e.id === id)
+    console.log(index)
+    if(index != -1){
+        console.log("existe")
         return true
     }else{
+        console.log("No existe")
         return false
     }
 }
