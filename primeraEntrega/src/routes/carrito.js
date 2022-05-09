@@ -18,7 +18,7 @@ router.get('/', (req, res) =>{
 router.post('/', (req, res) =>{
     let idCarrito = carrito.save()
 
-    res.status(500).json({
+    res.status(200).json({
         msj: 'A creado un nuevo carrito',
         id: idCarrito
     })
