@@ -1,0 +1,58 @@
+> use eccomerce
+switched to db eccomerce
+> db.createCollection("productos")
+{ "ok" : 1 }
+> const productosAgregados = [
+...     {
+...         nombre: "Lapiz",
+...         precio: 100,
+...         stock: 20
+...     },
+...     {
+...         nombre: "Lapicera",
+...         precio: 150,
+...         stock: 20
+...     },
+...     {
+...         nombre: "Fibron",
+...         precio: 225,
+...         stock: 10
+...     },
+...     {
+...         nombre: "Corrector",
+...         precio: 170,
+...         stock: 10
+...     },
+...     {
+...         nombre: "Resaltador",
+...         precio: 200,
+...         stock: 10
+...     },
+... ]
+> db.productos.insert(productosAgregados)
+db.productos.find().pretty()
+db.productos.count()
+
+db.productos.insertOne({nombre:"cartuchera",precio:500,stock:10})
+db.productos.find({precio: {$lt:1000}})
+db.productos.find({
+    $and: [
+        {"precio": {$gt: 1000}},
+        {"precio": {$lt: 3000}}
+
+    ]
+})
+db.productos.find({precio: {$gt:3000}})
+db.productos.find({}, {"nombre":1}).sort({"precio":1, "rating": -1}).skip(2).limit(1)
+db.productos.updateMany({},{$set: {"stock": 0}})
+db.productos.update({"precio": {$gt:4000}}, {$set: {"stock": 0}},{"multi":true})
+db.productos.deleteMany({"precio": {$lt:100}})
+db.createUser(
+    {
+        user:"pepe",
+        pwd:"asd456",
+        roles: [
+            {role: "read",db"eccomerce"}
+        ]
+    }
+)

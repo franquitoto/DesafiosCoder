@@ -13,10 +13,6 @@ router.get('/', async (req: Request, res: Response) => {
 
 router.post('/', async (req: Request, res: Response) => {
 	const {name, stock, price} = req.body;
-	//Validar Body porque sino te mandan cualquiera
-
-	
-	//Todo: Mandar todo como un solo objeto en vez de individualmente
 	const newProduct = await createProduct(name, stock, price);
 	res.json({
 		msg: "POST a product",
@@ -37,5 +33,3 @@ router.delete('/:id', (req: Request, res: Response) => {
 })
 
 export default router;
-
-export const variable1 = 2;

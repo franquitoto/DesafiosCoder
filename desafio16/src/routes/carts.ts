@@ -40,5 +40,3 @@ router.delete('/:cartId/products/:productId', (req: Request, res: Response) => {
 })
 
 export default router;
-
-export const variable1 = 2;
