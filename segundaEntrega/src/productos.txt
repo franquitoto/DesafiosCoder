@@ -1,0 +1,20 @@
+[
+	{
+		"id": "db458dd2-b922-42c8-9943-3a9876bc0862",
+		"timestamp": "2022-05-02T22:57:46.442Z",
+		"titulo": "goma",
+		"precio": 100
+	},
+	{
+		"id": "0624885c-e078-4dac-83ab-7b5eeabfa350",
+		"timestamp": "2022-05-02T22:58:05.590Z",
+		"titulo": "Pizarra",
+		"precio": 650
+	},
+	{
+		"id": "747be8ae-40e0-40a0-bda6-516bf2a2b5a6",
+		"timestamp": "2022-05-02T23:24:29.203Z",
+		"titulo": "Carpeta",
+		"precio": 999
+	}
+]
