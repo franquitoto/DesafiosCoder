@@ -20,27 +20,68 @@ const userAdmin = true
 
 // con esta funciona pero solo me va a funcionar con mongoose
 router.get('/', (req, res) => {
-    Productos.getAll().then(data =>{
+    Productos.getAll().then(data => {
         res.json({
-        data
-    });
+            data
+        });
     })
 });
 
+// Con esta en postman no me muestra nada y por consola me tira Promise { <pending> }
+// router.get('/:id', (req, res) => {
+
+//     const id = req.params.id
+//     if (Productos.controlId(id) === true) {
+//         return res.json({
+//             msj: Productos.getId(id)
+//         })
+//     } else {
+//         return res.status(400).json({
+//             error: 'El producto no existe'
+//         })
+//     }
+// });
 
 router.get('/:id', (req, res) => {
-
     const id = req.params.id
-    if (Productos.controlId(id) === true) {
-        return res.json({
-            msj: Productos.getId(id)
-        })
-    } else {
-        return res.status(400).json({
-            error: 'El producto no existe'
-        })
-    }
-});
+    let productId;
+    Productos.getById(id).then(data => {
+        productId = data
+        res.json({
+            data: data
+        });
+    })
+})
+
+// router.post('/', (req, res) => {
+//     if (userAdmin) {
+//         const titulo = req.body.titulo;
+//         const precio = req.body.precio;
+//         const body = req.body;
+//         if (typeof titulo != "string") {
+//             return res.status(400).json({
+//                 error: "El titulo debe ser un string"
+//             })
+//         }
+//         if (typeof precio != "number") {
+//             return res.status(400).json({
+//                 error: "El precio debe ser numerico"
+//             })
+//         }
+//         else {
+//             Productos.save(body)
+//             console.log(Productos.getAll())
+//             res.status(200).json({
+//                 msj: "Informacion enviada correctamente"
+//             })
+//         }
+//     } else {
+//         res.status(500).json({
+//             error: "Opcion solo valida para administradores"
+//         })
+//     }
+// })
+
 router.post('/', (req, res) => {
     if (userAdmin) {
         const titulo = req.body.titulo;
@@ -50,7 +91,6 @@ router.post('/', (req, res) => {
             return res.status(400).json({
                 error: "El titulo debe ser un string"
             })
-
         }
         if (typeof precio != "number") {
             return res.status(400).json({
@@ -59,7 +99,9 @@ router.post('/', (req, res) => {
         }
         else {
             Productos.save(body)
-            console.log(Productos.getAll())
+            Productos.getAll().then(data => {
+                console.log(data)
+            })
             res.status(200).json({
                 msj: "Informacion enviada correctamente"
             })
@@ -69,36 +111,29 @@ router.post('/', (req, res) => {
             error: "Opcion solo valida para administradores"
         })
     }
-
-
 })
+
 router.put('/:id', (req, res) => {
     if (userAdmin) {
         const id = req.params.id;
         const body = req.body;
         const titulo = req.body.titulo;
         const precio = req.body.precio;
-        if (Productos.controlId(id) === true) {
-            if (typeof titulo != "string") {
-                return res.status(400).json({
-                    error: "El titulo debe ser un string"
-                })
-
-            }
-            if (typeof precio != "number") {
-                return res.status(400).json({
-                    error: "El precio debe ser numerico"
-                })
-            }
-            else {
-                Productos.changeId(id, body)
-                res.status(200).json({
-                    msj: "Informacion enviada correctamente"
-                })
-            }
-        } else {
+        if (typeof titulo != "string") {
             return res.status(400).json({
-                error: 'El numero es demasiado grande o demasiado chico'
+                error: "El titulo debe ser un string"
+            })
+        }
+        if (typeof precio != "number") {
+            return res.status(400).json({
+                error: "El precio debe ser numerico"
+            })
+        }
+        else {
+            Productos.changeId(id, body).then(data => {
+                res.status(200).json({
+                    data: data
+                })
             })
         }
     } else {
@@ -112,23 +147,16 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     if (userAdmin) {
         const id = req.params.id;
-        if (Productos.controlId(id) === true) {
-            Productos.deleteId(id)
+        Productos.deleteId(id).then(data => {
             res.status(200).json({
                 mjs: 'Producto eliminado correctamente'
             })
-        } else {
-            return res.status(400).json({
-                error: 'El numero es demasiado grande o demasiado chico'
-            })
-        }
+        })
     } else {
         res.status(500).json({
             error: "Opcion solo valida para administradores"
         })
     }
-
-
 })
 
 
