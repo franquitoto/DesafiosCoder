@@ -18,7 +18,7 @@ export const crearCarrito = async (req: Request, res: Response) =>{
     }
 }
 
-export const addCarrito = async (req: Request, res: Response) =>{
-    const id = req.params
-    const productoAgregado = getById(id)
-}
+// export const addCarrito = async (req: Request, res: Response) =>{
+//     const id = req.params
+//     const productoAgregado = getById()
+// }
