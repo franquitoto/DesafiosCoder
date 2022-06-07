@@ -1,6 +1,5 @@
 const { Router, query } = require('express');
 const express = require('express');
-const carrito = require('../controller/carrito');
 const productos = require('../controller/productos');
 
 const router = express.Router();
