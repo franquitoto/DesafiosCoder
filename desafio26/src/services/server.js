@@ -2,18 +2,18 @@ import express from "express";
 import mainRouter from '../routes/index';
 import http from 'http';
 import path from "path";
-import cookieParser from 'cookie-parser';
 import session from 'express-session';
+import passport from 'passport';
+import { loginFunc, signUpFunc } from './auth';
 import MongoStore from "connect-mongo";
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cookieParser());
 const ttlSeconds = 180;
 const storeOptions = {
   store: MongoStore.create({
-    mongoUrl: 'mongodb+srv://franco99:OrWu5DCtlXaoblJq@cluster0.tvjwd.mongodb.net/eccomerce?retryWrites=true&w=majority',
+    mongoUrl: 'mongodb+srv://franco99:Coco2022@cluster0.tvjwd.mongodb.net/eccomerce?retryWrites=true&w=majority',
     crypto: {
       secret: 'squirrel',
     },
@@ -22,7 +22,7 @@ const storeOptions = {
   resave: false,
   saveUninitialized: false,
   cookie: {
-    maxAge: ttlSeconds * 100,
+    maxAge: ttlSeconds * 1000,
   },
 };
 app.use(session(storeOptions));
@@ -32,6 +32,17 @@ app.use(express.static(publicPath));
 app.set('view engine', 'ejs');
 const viewsPath = path.resolve(__dirname, '../../views');
 app.set('views', viewsPath);
+//Indicamos que vamos a usar passport en todas nuestras rutas
+app.use(passport.initialize());
+
+//Permitimos que passport pueda manipular las sessiones de nuestra app
+app.use(passport.session());
+
+// Cuando un usuario se autentique correctamente, passport va a devolver en la session la info del usuario
+passport.use('login', loginFunc);
+
+//signUpFunc va a ser una funcion que vamos a crear y va a tener la logica de registro de nuevos usuarios
+passport.use('signup', signUpFunc);
 
 
 
