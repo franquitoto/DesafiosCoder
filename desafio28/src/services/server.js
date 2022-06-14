@@ -6,6 +6,7 @@ import session from 'express-session';
 import passport from 'passport';
 import { loginFunc, signUpFunc } from './auth';
 import MongoStore from "connect-mongo";
+import Config from './config/index';
 
 const app = express();
 app.use(express.json());
@@ -13,7 +14,7 @@ app.use(express.urlencoded({extended: true}));
 const ttlSeconds = 180;
 const storeOptions = {
   store: MongoStore.create({
-    mongoUrl: ,
+    mongoUrl: Config.MONGO_ATLAS_URL ,
     crypto: {
       secret: 'squirrel',
     },

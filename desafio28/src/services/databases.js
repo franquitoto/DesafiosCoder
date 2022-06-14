@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
-const connectionString = 
+import Config from './config/index';
+const connectionString = Config.MONGO_ATLAS_URL
 
 export const initMongoDB = async () =>{
     try{
