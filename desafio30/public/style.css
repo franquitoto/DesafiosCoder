@@ -1,0 +1,58 @@
+.form{
+    background-color: aqua;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 500px;
+    border-radius: 3%;
+}
+.chat{
+    background-color: ghostwhite;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 500px;
+    border-radius: 3%;
+}
+#table{
+    padding: 20px;
+    margin-left: 20px;
+    margin-top: 0px;
+    width: 500px;
+    
+}
+#titulo{
+    padding-top: 20px;
+    padding-left:20px ;
+}
+#div{
+    align-self: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.tablaNone{
+    display: none;
+    
+}
+.tablaBlock{
+    display: block;
+    
+}
+#body{
+    background-color: brown;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+#div2{
+    width: 500px;
+    height: 500px;
+}
