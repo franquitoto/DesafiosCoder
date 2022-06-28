@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src --out-dir dist",
-    "start": "node ./dist/index.js",
+    "start": "npm run build $$./dist/index.js --mode=cluster",
     "ejemplo": "npm run build && node ./dist/index.js",
     "dev": "nodemon --exec babel-node ./src/index.js",
     "artillery:cluster" : "artillery quick --count 50 -n 40 http://localhost:8080/info",
