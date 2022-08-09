@@ -1,21 +1,15 @@
-import { Router } from 'express';
-import Productos from './productos';
-import Usuarios from './usuarios';
+import { Router } from "express";
+import UsersRouter from './users';
 
 
+const router = Router();
 
-export default class MainRouter {
-  constructor() { }
+router.get('/Hello', (req, res) => { // Enviamos un mensaje simple por una ruta determinada para abalar q el serivod esta arriba
+    res.json({
+        msg: 'Hola', session: req.session //enviamos un mensaje con la sesion
+    });
+});
 
-  static start() {
-    const router = Router();
-    const productos = new Productos();
-    const usuarios = new Usuarios();
-    
+router.use('/users', UsersRouter);
 
-    router.use('/productos', productos.start());
-    router.use("/usuarios", usuarios.start());
-   
-    return router;
-  }
-}
+export default router;

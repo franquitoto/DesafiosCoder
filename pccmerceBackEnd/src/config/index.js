@@ -1,19 +1,10 @@
-import minimist from "minimist";
+// Imnportamos doten para obtener las variables de entorno previamente seteadas en dotenv
 import dotenv from 'dotenv';
 
+// habilitamos la funcion config de dotenv
 dotenv.config();
-
-const optionalArgsObjet = {
-    default: {
-        persistencia: "MONGO",
-    },
-};
-
-const args = minimist(process.argv, optionalArgsObjet);
-
-export default {
-    NODE_ENV : process.env.NODE_ENV || 'development',
-    PORT: 8080,
-    MONGO_ATLAS_SRV: process.env.MONGO_ATLAS_SRV || 'mongosrv',
-    PERSISTENCIA: args.persistencia
+// exportamos las variables de entorno a la aplicacion
+export default{
+    MONGO_ATLAS_URL: process.env.MONGO_ATLAS_SRV || 'mongoSRV',
+    PORT: process.env.PORT || 8080,
 }
