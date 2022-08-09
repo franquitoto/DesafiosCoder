@@ -4,7 +4,7 @@ import passport from "passport"; // Libreria para para poder manejar las sesione
 import session from "express-session"; // Libreria para para poder manejar las sesiones del usuario complementadas con otras
 import Config from "../config"; // Importamos las variables de entorno;
 import Logger from './logger';
-require('../passport/local-auth');
+import { signupFunc } from "../passport/local-auth";
 
 
 import mainRouter from '../routes'
@@ -34,6 +34,7 @@ app.use(session(StoreOptions));
 app.use(express.json());
 app.use(passport.initialize());
 app.use(passport.session());
+passport.use('signup', signupFunc);
 
 app.use('/api', mainRouter);
 
